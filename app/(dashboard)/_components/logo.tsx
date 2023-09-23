@@ -3,8 +3,8 @@ import Image from "next/image";
 export const Logo = () => {
   return (
     <Image
-      height={80}
-      width={80}
+      height={60}
+      width={60}
       alt="logo"
       src="/logo-black.png"
     />
