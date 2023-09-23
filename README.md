@@ -5,30 +5,15 @@
 [Website](https://lms-iota-gray.vercel.app/)
 
 
-
+## INTRODUCTION
+A Learning Management System (LMS) is a web-based platform designed to facilitate the creation, delivery, and management of educational content. It serves as a centralized hub for organizing courses, training materials, assessments, and communication tools, making it an invaluable resource for educational institutions, businesses, and organizations. Through an intuitive interface, users can access learning materials, track progress, participate in discussions, and complete assignments, all within a virtual environment. LMS platforms have revolutionized the way learning is conducted, providing a flexible and scalable solution for both traditional and online education. This technology empowers educators and learners alike to engage in dynamic, interactive, and effective educational experiences.
 
 This is a repository for Build an LMS Platform: Next.js 13,  React, Stripe, Mux, Prisma, Tailwind, MySQL
 
 
 
-Key Features:
 
-- Browse & Filter Courses
-- Purchase Courses using Stripe
-- Mark Chapters as Completed or Uncompleted
-- Progress Calculation of each Course
-- Student Dashboard
-- Teacher mode
-- Create new Courses
-- Create new Chapters
-- Easily reorder chapter position with drag n’ drop
-- Upload thumbnails, attachments and videos using UploadThing
-- Video processing using Mux
-- HLS Video player using Mux
-- Rich text editor for chapter description
-- Authentication using Clerk
-- ORM using Prisma
-- MySQL database using Planetscale
+## GETTING STARTED & USER GUIDE
 
 ### Prerequisites
 
@@ -110,3 +95,30 @@ Running commands with npm `npm run [command]`
 | command         | description                              |
 | :-------------- | :--------------------------------------- |
 | `dev`           | Starts a development instance of the app |
+
+
+
+## Features:
+
+- Browse & Filter Courses
+- Purchase Courses using Stripe
+- Mark Chapters as Completed or Uncompleted
+- Progress Calculation of each Course
+- Student Dashboard
+- Teacher mode
+- Create new Courses
+- Create new Chapters
+- Easily reorder chapter position with drag n’ drop
+- Upload thumbnails, attachments and videos using UploadThing
+- Video processing using Mux
+- HLS Video player using Mux
+- Rich text editor for chapter description
+- Authentication using Clerk
+- ORM using Prisma
+- MySQL database using Planetscale
+
+## TECH-STACK CHARGES
+PLANETSCALE- HOBBY PLAN 0$
+STRIPE - TEST MODE 0$ (PERCENTAGE BASIS PER PAYMENT)
+UPLOAD THING - 2GB FREE (PAY AS YOU GO OR 10$ MONTH 100GB)
+MUX - PAY AS YOU GO MODEL (MAX VIDEO IN FREE MODE-10s)
