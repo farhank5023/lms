@@ -3,6 +3,7 @@
 [Live Video Demo](https://drive.google.com/file/d/1Dj9l5DwZUMgsenmYgo3BfZUb_sPNVLDg/view?usp=sharing)
 
 [Website](https://lms-iota-gray.vercel.app/)
+[LIGHTHOUSE REPORT](https://drive.google.com/file/d/1hr86X5iE0NEY83c3RCnVGLZQ0F0B7Oxl/view?usp=sharing)
 
 
 ## INTRODUCTION
