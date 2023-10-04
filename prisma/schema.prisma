@@ -32,6 +32,16 @@ model Course {
   @@fulltext([title])
 }
 
+model Coupon{
+  id          String @id @default(uuid())
+  userId      String
+  title       String @db.Text
+  discount    Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  isPublished Boolean @default(false)
+}
+
 model Category {
   id      String   @id @default(uuid())
   name    String   @unique

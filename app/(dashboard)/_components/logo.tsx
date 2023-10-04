@@ -7,6 +7,6 @@ export const Logo = () => {
       width={130}
       alt="logo"
       src="/prep-logo-black.svg"
-    />
+     />
   )
 }

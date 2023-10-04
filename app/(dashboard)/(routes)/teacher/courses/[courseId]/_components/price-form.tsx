@@ -1,5 +1,6 @@
 "use client";
 
+
 import * as z from "zod";
 import axios from "axios";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -28,7 +29,13 @@ interface PriceFormProps {
 };
 
 const formSchema = z.object({
-  price: z.coerce.number(),
+  price: z
+    .coerce.number()
+    .nonnegative()
+    .refine((value) => value !== 0, {
+      message: "Price cannot be 0",
+      path: ["price"],
+    }),
 });
 
 export const PriceForm = ({
@@ -83,7 +90,7 @@ export const PriceForm = ({
         )}>
           {initialData.price
             ? formatPrice(initialData.price)
-            : "No price"
+            : "Free"
           }
         </p>
       )}
@@ -101,7 +108,7 @@ export const PriceForm = ({
                   <FormControl>
                     <Input
                       type="number"
-                      step="0.01"
+                      step="1"
                       disabled={isSubmitting}
                       placeholder="Set a price for your course"
                       {...field}
@@ -113,7 +120,7 @@ export const PriceForm = ({
             />
             <div className="flex items-center gap-x-2">
               <Button
-                disabled={!isValid || isSubmitting}
+                disabled={isSubmitting || !isValid  }
                 type="submit"
               >
                 Save
