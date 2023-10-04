@@ -91,7 +91,7 @@ import { Button } from "@/components/ui/button";
                     price={course.price!}
                     userId={""} />
                     <Input className="w-50 h-30" type="text" placeholder="Have a Coupon Code?" />
-                    <Button></Button>
+                    <Button>Go</Button>
                     </> 
               )}
 
