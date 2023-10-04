@@ -29,6 +29,13 @@ const teacherRoutes = [
     label: "Analytics",
     href: "/teacher/analytics",
   },
+  {
+    icon: List,
+    label: "Coupons",
+    href: "/teacher/coupons",
+  },
+
+
 ]
 
 export const SidebarRoutes = () => {
