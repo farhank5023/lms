@@ -9,7 +9,7 @@ export async function POST(req: Request)
         const { userId } = auth();
         const { title,discount} = await req.json();
         // const {  } = await req.json();
-        console.log("reached here");
+        console.log("wow man here");
         const discountValue = parseFloat(discount);
         if(!userId){
             return new NextResponse("Unauthorized", {status: 401});

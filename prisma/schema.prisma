@@ -34,8 +34,8 @@ model Course {
 
 model Coupon{
   id          String @id @default(uuid())
-  userId      String
-  title       String @db.Text
+  userId      String 
+  title       String @db.VarChar(255) @unique
   discount    Int
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt

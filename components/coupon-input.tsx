@@ -1,86 +1,84 @@
-// // Assuming you're using TypeScript
-// import { useState } from "react";
-// import { auth } from "@clerk/nextjs";
-// import { db } from "@/lib/db"; // Assuming you have a file for Prisma configuration
-// import { title } from "process";
+// components/coupon-input.tsx
+"use client"
+//golden dont touch
+import React, { ChangeEvent, useState } from 'react';
+import { Input } from './ui/input';
+import { Button } from './ui/button';
+import toast from 'react-hot-toast';
 
-// const CouponField = () => {
-//   const [coupon, setCoupon] = useState("");
-//   const { userId } = auth(); // Retrieve the authenticated user's session
+const CouponInput = () => {
+  const [couponCode, setCouponCode] = useState("");
 
-//   const handleCouponChange = (e) => {
-//     setCoupon(e.target.value);
-//   };
-
-//   const handleCouponSubmit = async (e) => {
-//     e.preventDefault();
-
-//     try {
-//       const user = await db.coupon.findUnique({
-//         where: {
-//          id: params.courseId,
-//          userId: userId,
-//          title: title, },
-//       });
-
-//       const matchingTitles = await db.coupon.findMany({
-//         where: {
-//           AND: [
-//             { userId: user.id },
-//             { title: { contains: coupon, mode: "insensitive" } },
-//           ],
-//         },
-//       });
-
-//       // Do something with matchingTitles (e.g., display, update state, etc.)
-//     } catch (error) {
-//       console.error("Error:", error);
-//     }
-//   };
-
-//   return (
-//     <form onSubmit={handleCouponSubmit}>
-//       <label>
-//         Coupon Discount:
-//         <input
-//           type="text"
-//           placeholder="e.g. 'learn50'"
-//           value={coupon}
-//           onChange={handleCouponChange}
-//         />
-//       </label>
-//       <button type="submit">Submit</button>
-//     </form>
-//   );
-// };
-
-// export default CouponField;
-
-// Assuming you have a model named `YourModel` in your Prisma schema
-import React, { useState, ChangeEvent } from 'react';
-
-interface CouponInputProps {
-  onInputChange: (input: string) => void;
-}
-
-const CouponInput: React.FC<CouponInputProps> = ({ onInputChange }) => {
-  const [coupon, setCoupon] = useState('');
-
-  const handleCouponChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const input = e.target.value;
-    setCoupon(input);
-    onInputChange(input);
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setCouponCode(e.target.value);
   };
 
+  // const handleGoButtonClick = async () => {
+  //   try {
+      
+  //     const response = await fetch('/api/coupon', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({ couponCode }),
+  //     });
+
+  //     if (response.ok) {
+  //       const data = await response.json();
+  //       if (data.valid) {
+  //         console.log(`Coupon found: ${data.coupon.title}, Discount: ${data.coupon.discount}%`);
+  //       } else {
+  //         console.log('Invalid coupon');
+  //       }
+  //     } else {
+  //       console.error('Error checking coupon');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error checking coupon', error);
+  //   }
+  // };
+  const handleGoButtonClick = async () => {
+    try {
+      const response = await fetch('/api/coupon', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ userInput: couponCode }), // Assuming `couponCode` is the user input
+      });
+  
+      if (response.ok) {
+        const data = await response.json();
+        if (data.valid) {
+          console.log('Matching Coupons:', data.coupons);
+          const discount = data.coupons[0].discount; 
+          toast.success("You got a discount of"+""+discount+""+"%");
+        } else {
+          console.log('No matching coupons found.');
+          toast.error("No matching coupons found")
+        }
+      } else {
+        console.error('Error comparing coupon');
+      }
+    } catch (error) {
+      console.error('Error comparing coupon', error);
+    }
+  };
+  
+
   return (
-    <input
-      type="text"
-      placeholder="Enter coupon code"
-      value={coupon}
-      onChange={handleCouponChange}
-    />
+    <div>
+      <Input
+        className="w-50 h-30"
+        type="text"
+        placeholder="Have a Coupon Code?"
+        value={couponCode}
+        onChange={handleInputChange}
+      />
+      <Button onClick={handleGoButtonClick}>Go</Button>
+    </div>
   );
-};
+}
+
 export default CouponInput;
-
-

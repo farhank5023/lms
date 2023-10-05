@@ -1,7 +1,8 @@
-  import { auth } from "@clerk/nextjs";
+
+ import { auth } from "@clerk/nextjs";
   import { redirect } from "next/navigation";
   import { File } from "lucide-react";
-
+  
   import { getChapter } from "@/actions/get-chapter";
   import { Banner } from "@/components/banner";
   import { Separator } from "@/components/ui/separator";
@@ -14,11 +15,13 @@
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
+
   const ChapterIdPage = async ({
     params
   }: {
     params: { courseId: string; chapterId: string }
   }) => {
+   
     const { userId } = auth();
     
     if (!userId) {
@@ -46,7 +49,10 @@ import { Button } from "@/components/ui/button";
 
     const isLocked = !chapter.isFree && !purchase;
     const completeOnEnd = !!purchase && !userProgress?.isCompleted;
-
+    
+  
+  
+ 
     return ( 
       <div>
         {userProgress?.isCompleted && (
@@ -90,11 +96,11 @@ import { Button } from "@/components/ui/button";
                     courseId={params.courseId}
                     price={course.price!}
                     userId={""} />
-                    <Input className="w-50 h-30" type="text" placeholder="Have a Coupon Code?" />
-                    <Button>Go</Button>
+                   
+                   <CouponInput />
                     </> 
               )}
-
+{/*  */}
           
             </div>
             <Separator />
